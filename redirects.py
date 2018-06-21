@@ -1,6 +1,5 @@
 import requests
-import fileIO
-
+#import fileIO
 def get_redirects(parsingurl):
     """Traces and prints the redirects of a link provided"""
     #TODO Make
@@ -14,8 +13,8 @@ def get_redirects(parsingurl):
             info = []
             if ("safelinks.protection.outlook.com" in strresp):
                 q =1
-            elif ("safelinks.protection.outlook.com" not in strresp):
-                info.add(["Redirect Depth {}".format(count),"\nRedirect type: {}".format(resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n"])
+            elif ("safelinks.protection.outlook.com" not in strresp): #parses out safelinks
+                info.append(["Redirect Depth {}".format(count),"\nRedirect type: {}".format(resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n"])
                 print ("Redirect Depth {}".format(count),"\nRedirect type: {}".format(resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n")
         print("Final (User sees) destination:")
         print(response.status_code, response.url)
