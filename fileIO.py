@@ -11,6 +11,3 @@ def parse_file():
                 URLS.add(URL)
             else:
                 print("\nURL loop output: {}".format(URL)
-    #return URLS
-
-#print(parse_file())
