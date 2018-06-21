@@ -37,11 +37,10 @@ for url in urls:
     try:
         if "https://" in url:
             current = url
-            #output.append("\nNew Redirect:\n")
             for returned in get_redirects(url):
                 output.append(returned)
                 output.append("\n")
-        else:  # for the Added thing
+        else:  # for the Added: thing
             if "Added" in url:
                 print("Url Number: {}".format(count))
                 count += 1
