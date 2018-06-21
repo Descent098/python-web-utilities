@@ -20,7 +20,7 @@ def get_redirects(parsingurl):
                 yield ("Redirect Depth {} \nRedirect type: {} \nResponse URL: {}{}".format(count, resp.status_code, resp.url, "\n"))
                 print("Redirect Depth {}".format(count), "\nRedirect type: {}".format(
                     resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n")
-        yield("Final (User sees) destination: {} \nWith a {} redirect error{}".format(response.url, response.status_code, "\n"))
+        yield("Final (User sees) destination: {} \nWith a {} redirect status{}".format(response.url, response.status_code, "\n"))
     else:
         print("Request was not redirected")
 
@@ -31,8 +31,9 @@ def get_redirects(parsingurl):
 urls = parse_file()
 
 output = []
-
+count = 1
 for url in urls:
+
     try:
         if "https://" in url:
             current = url
@@ -41,7 +42,11 @@ for url in urls:
                 output.append(returned)
                 output.append("\n")
         else:  # for the Added thing
+            if "Added" in url:
+                print("Url Number: {}".format(count))
+                count += 1
             output.append(url)
+
     except:
         output.append("Error while checking {}".format(current))
 output = [q for q in output if q is not None]

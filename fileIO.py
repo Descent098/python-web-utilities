@@ -1,6 +1,6 @@
 def parse_file():
     """Takes the path of a file as input and parses it"""
-    fn = open("redirects_list_raw_mini.txt")
+    fn = open("redirects_list_raw.txt")
     dat = []
     URLS = []
     line = fn.readlines()
@@ -21,7 +21,7 @@ def parse_file():
 
 def save_list(list_data):
     """Takes in data and writes it to file"""
-    new_filename = "Last_Raw_Data"  # Hard coded for current use
+    new_filename = "full_Scrape"  # Hard coded for current use
     new_filename += ".txt"
     q = open(new_filename, "w")
     for info in list_data:
