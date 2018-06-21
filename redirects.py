@@ -1,19 +1,5 @@
 import requests
-
-def parse_file(filepath):
-    """Takes the path of a file as input and parses it"""
-    fn = open(filepath, r)
-
-    URLS = []
-    #Parse input file for URL's
-
-    #assign data from files in a loop to variable dat
-    while reading: # placeholder sudo code
-        for url in line:
-            urls = [url for url in dat] #single line list comprehension
-        else conditional:
-            None
-
+import fileIO
 
 def get_redirects(parsingurl):
     """Traces and prints the redirects of a link provided"""
