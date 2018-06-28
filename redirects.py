@@ -14,7 +14,7 @@ def get_redirects_print_only(parsingurl):
             if ("safelinks.protection.outlook.com" in strresp):
                 None
             elif ("safelinks.protection.outlook.com" not in strresp):  # parses out safelinks
-                #yield ("Redirect Depth {} \nRedirect type: {} \nResponse URL: {}{}".format(count, resp.status_code, resp.url, "\n"))
+                yield ("Redirect Depth {} \nRedirect type: {} \nResponse URL: {}{}".format(count, resp.status_code, resp.url, "\n"))
                 print("Redirect Depth {}".format(count), "\nRedirect type: {}".format(
                     resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n")
         print("Final (User sees) destination: {} \nWith a {} redirect status{}".format(response.url, response.status_code, "\n"))
@@ -26,18 +26,16 @@ def get_redirects(parsingurl):
     Designed for batch processing from text files"""
     response = requests.get(parsingurl)
     if response.history:
-        print("\nNew Redirect")
+        yield("\nNew Redirect")
         count = 0
         for resp in response.history:
             strresp = str(resp.url)
             count += 1
-            #info = []
             if ("safelinks.protection.outlook.com" in strresp):
                 None
             elif ("safelinks.protection.outlook.com" not in strresp):  # parses out safelinks
                 yield ("Redirect Depth {} \nRedirect type: {} \nResponse URL: {}{}".format(count, resp.status_code, resp.url, "\n"))
-                print("Redirect Depth {}".format(count), "\nRedirect type: {}".format(
-                    resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n")
+                #print("Redirect Depth {}".format(count), "\nRedirect type: {}".format(resp.status_code), "\nResponse URL: {}".format(resp.url) + "\n")
         yield("Final (User sees) destination: {} \nWith a {} redirect status{}".format(response.url, response.status_code, "\n"))
     else:
         print("Request was not redirected")

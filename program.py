@@ -1,4 +1,4 @@
-from redirects import get_redirects_print_only
+from redirects import *
 from fileIO import *
 import requests
 keep_on = True
@@ -9,7 +9,20 @@ while keep_on == True:
 
     if selection == 1:
         url = input("What is the URL you would like to trace?: ")
-        get_redirects_print_only(url)
+        output = []
+        count = 1
+        try:
+            if ("https://" or "http://") in url:
+                current = url
+                for returned in list(get_redirects(url)):
+                    output.append(returned)
+                    output.append("\n")
+            else:
+                None
+        except:
+            output.append("Error while checking {}".format(current))
+        for i in output:
+            print(i)
 
     if selection == 2:
         #TODO fill this out
