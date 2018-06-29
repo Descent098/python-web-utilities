@@ -1,5 +1,4 @@
 # Contains Utilities for parsing different tags in html
-from lxml import html
 import requests
 import bs4
 
