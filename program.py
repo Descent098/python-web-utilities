@@ -1,11 +1,13 @@
+"""File to run all the utilities from"""
 from redirects import menu_options as redirects_menu
 from tag_parsers import menu_options as tag_parsers_menu
 from fileIO import *
 import requests
-keep_on = True
 
 print("===================Welcome to Web Utilities===================")
-while keep_on == True:
+while keep_on == True:    
+keep_on = True
+
     utility_to_run = (eval(input("What type of utility do you need? \n(1)Redirect tracing (2)HTML Tag parsing: ")))
     if utility_to_run == 1:
         redirects_menu()

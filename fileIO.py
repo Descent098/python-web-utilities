@@ -1,3 +1,5 @@
+#Helper functions to handle file input and output
+
 def parse_file():
     """Takes the path of a file as input and parses it"""
     fn = open("domains_list_raw.txt")

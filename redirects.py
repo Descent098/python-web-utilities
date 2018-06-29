@@ -1,3 +1,4 @@
+#Utilities to handle redirects and redirect histories, also some proxy info
 import requests
 from fileIO import *
 
