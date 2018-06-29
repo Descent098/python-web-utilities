@@ -21,7 +21,15 @@ def parse_heading_1(reference, web=False):
     Arguments: reference; the path or URL to parse from
     web; True if reference is a URL or false for local filepath"""
     if web == False:
-        None
+        with open(reference, "r") as f:
+            page = f.read()
+        tree = html.fromstring(page)
+        for i in tree:
+            print(i.drop_tag())
+        print(tree)
+
     elif web == True:
         #TODO Implement functionality
         None
+
+parse_heading_1("ul.html")
