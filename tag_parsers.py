@@ -63,32 +63,30 @@ def menu_options():
         web = True
     elif is_web ==2:
         web = False
-    script_choice = eval(input("What would you like to parse? \n(1)Heading Tags \n(2)Lists"))
+    script_choice = eval(input("What would you like to parse? \n(1)Heading Tags (2)Lists: "))
 
     if script_choice == 1:
-        None
+        size = input("What size heading are you looking for (i.e. 1 for h1 tags, 2 for h2 tags)?: ")
+        print(parse_heading(input("File name/url (Excluding Extension i.e. index for index.html): "), size, web))
+
     elif script_choice ==2:
-        #TODO write Lists options
-        None
+        print(parse_list(input("File name/url (Excluding Extension i.e. index for index.html): "), web))
 
 
 if __name__ == "__main__":
     """Testing stuff; only works if file is run as main"""
-
     # #h1 Parse Testing
     # is_web = eval(input("Is the html from (1)The Web or (2)Local File?: "))
     # if is_web == 1:
     #     web = True
     # elif is_web ==2:
     #     web = False
-    # #size = input("What size heading are you looking for (i.e. 1 for h1 tags, 2 for h2 tags)?: ")
     # print(parse_heading(input("File name/url (Excluding Extension i.e. index for index.html): "), "1", web))
-
-    #ul Parse Testing
-    is_web = eval(input("Is the html from (1)The Web or (2)Local File?: "))
-    if is_web == 1:
-        web = True
-    elif is_web ==2:
-        web = False
-    #size = input("What size heading are you looking for (i.e. 1 for h1 tags, 2 for h2 tags)?: ")
-    print(parse_list(input("File name/url (Excluding Extension i.e. index for index.html): "), web))
+    ##########################################################################################################
+    # #ul Parse Testing
+    # is_web = eval(input("Is the html from (1)The Web or (2)Local File?: "))
+    # if is_web == 1:
+    #     web = True
+    # elif is_web ==2:
+    #     web = False
+    # print(parse_list(input("File name/url (Excluding Extension i.e. index for index.html): "), web))

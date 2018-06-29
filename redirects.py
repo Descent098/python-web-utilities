@@ -41,25 +41,66 @@ def get_redirects(parsingurl):
     else:
         print("Request was not redirected")
 
-
-def onetime():
-    urls = parse_file()
+def single_URL_trace(url):
     output = []
     count = 1
-    for url in urls:
-        try:
-            if "https://" in url:
-                current = url
-                for returned in get_redirects(url):
-                    output.append(returned)
-                    output.append("\n")
-            else:  # for the Added: thing
-                if "Added" in url:
-                    print("Url Number: {}".format(count))
-                    count += 1
-                output.append(url)
-        except:
-            output.append("Error while checking {}".format(current))
-    output = [q for q in output if q is not None]
-    output = [q for q in output if q is not ","]
-    save_list(output)
+    try:
+        if ("https://" or "http://") in url:
+            current = url
+            for returned in list(get_redirects(url)):
+                output.append(returned)
+                output.append("\n")
+        else:
+            None
+    except:
+        output.append("Error while checking {}".format(current))
+    for i in output:
+        print(i)
+
+#TODO See if funtionality is viable still for this function
+# def onetime():
+#     urls = parse_file()
+#     output = []
+#     count = 1
+#     for url in urls:
+#         try:
+#             if "https://" in url:
+#                 current = url
+#                 for returned in get_redirects(url):
+#                     output.append(returned)
+#                     output.append("\n")
+#             else:  # for the Added: thing
+#                 if "Added" in url:
+#                     print("Url Number: {}".format(count))
+#                     count += 1
+#                 output.append(url)
+#         except:
+#             output.append("Error while checking {}".format(current))
+#     output = [q for q in output if q is not None]
+#     output = [q for q in output if q is not ","]
+#     save_list(output)
+
+def menu_options():
+    """Called from main program; compartmentalizing menu options per utility"""
+    #TODO Make web or file parsing options
+    # is_web = eval(input("Is the link from (1)The Web or (2)Local File?: "))
+    # if is_web == 1:
+    #     web = True
+    # elif is_web ==2:
+    #     web = False
+
+    keep_going = True
+
+    #TODO once the selection above is made this is irrelevant because anyone tracing a single redirect from a file is a tool
+    selection = eval(input("What would you like to do? \n(1) Trace a redirect \n(2)Trace redirects from a text file \n(3)exit: "))
+    while keep_going == True:
+        if selection == 1:
+            url = input("What is the URL you would like to trace?: ")
+            single_URL_trace(url)
+
+        if selection == 2:
+            #TODO fill this out
+            pass
+
+        if selection == 3:
+            keep_on = False
