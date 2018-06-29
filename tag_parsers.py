@@ -23,7 +23,9 @@ def parse_heading(reference, size="1",web=False):
     Size: the heading type i.e. 1 for heading 1
     web; True if reference is a URL or false for local filepath"""
 
-    class_id = eval(input("Do you have a class you want to look in? (1)Yes (2)No: "))
+    #TODO Search by class ID
+    #class_id = eval(input("Do you have a class you want to look in? (1)Yes (2)No: "))
+
     if class_id == 1:
         input("What is the class name?: ")
 
@@ -43,6 +45,15 @@ def get_html_from_URL(url):
     response = requests.get(url)
     return response.text
 
+def menu_options():
+    """Called from main program; compartmentalizing menu options per utility"""
+    is_web = eval(input("Is the html from (1)The Web or (2)Local File?: "))
+    script_choice = eval(input("What would you like to parse? \n(1)Heading Tags \n(2)Lists"))
+    if script_choice == 1:
+
+    elif script_choice ==2:
+        #TODO write Lists options
+
 
 if __name__ == "__main__":
     """Testing stuff; only works if file is run as main"""
@@ -54,5 +65,4 @@ if __name__ == "__main__":
     elif is_web ==2:
         web = False
     #size = input("What size heading are you looking for (i.e. 1 for h1 tags, 2 for h2 tags)?: ")
-
     print(parse_heading(input("File name/url (Excluding Extension i.e. index for index.html): "), "1", web))
