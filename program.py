@@ -5,8 +5,8 @@ from fileIO import *
 import requests
 
 print("===================Welcome to Web Utilities===================")
-while keep_on == True:    
 keep_on = True
+while keep_on == True:
 
     utility_to_run = (eval(input("What type of utility do you need? \n(1)Redirect tracing (2)HTML Tag parsing: ")))
     if utility_to_run == 1:
