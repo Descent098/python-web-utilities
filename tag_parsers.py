@@ -26,7 +26,7 @@ def parse_list(reference, web=False):
 
         soup = bs4.BeautifulSoup(html, 'html.parser')
         print('')
-        return soup.find('ul').get_text()
+        return soup.find_all('ul')#.get_text()
 
 def parse_heading(reference, size="1",web=False):
     """Parses all heading tags and pulls the information between the tag
@@ -51,7 +51,7 @@ def parse_heading(reference, size="1",web=False):
 
         soup = bs4.BeautifulSoup(html, 'html.parser')
         print('')
-        return soup.find('h{}'.format(size)).get_text()
+        return soup.find_all('h{}'.format(size)).get_text()
 
 def parse_paragraphs(reference, web=False):
     """Parses all paragraph tags and pulls the information between the tag
@@ -75,7 +75,7 @@ def parse_paragraphs(reference, web=False):
 
         soup = bs4.BeautifulSoup(html, 'html.parser')
         print('')
-        return soup.find('p').get_text()
+        return soup.find_all('p').get_text()
 
 def get_html_from_URL(url):
     """Function that takes a URL as input and returns the HTML as a string"""
@@ -104,4 +104,16 @@ def menu_options():
 
 if __name__ == "__main__":
     """Testing stuff; only works if file is run as main"""
+    lists = parse_list('https://law.ucalgary.ca', True)
+    count = 0
+    lines = {}
+    for i in lists:
+        count+= 1
+        lines['line {}'.format(count,)] = i
+
+    #TODO Fix dictionary parsing to create sublisted items printing nicely
+    for i in lines:
+        print(lines[i])
+
+    #print(lines)
     pass
