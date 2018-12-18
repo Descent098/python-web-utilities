@@ -14,4 +14,4 @@ class validation_spider(scrapy.Spider):
         start_urls = start
 
 if __name__ == "__main__":
-    1
+    pass

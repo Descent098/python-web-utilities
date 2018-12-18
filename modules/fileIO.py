@@ -1,11 +1,25 @@
-#Helper functions to handle file input and output
+# Helper functions to handle file input and output
+import tkinter as tk
+from tkinter import filedialog
+
+
+def select_file():
+    """Opens a dialogue to select text files and returns path as a string"""
+    root = tk.Tk()
+    root.withdraw()
+    file_path = str(filedialog.askopenfilename(
+        title="Select File",
+        filetypes=[("Text files", ".txt")]
+        ))
+    return str(file_path)
+
 
 def parse_file():
     """Takes the path of a file as input and parses it"""
-    fn = open("domains_list_raw.txt")
+    source = open(select_file())
     dat = []
     URLS = []
-    line = fn.readlines()
+    line = source.readlines()
     dat = [url.split("to") for url in line]  # single line list comprehension
     for li in dat:
         for URL in li:
@@ -26,3 +40,7 @@ def save_list(list_data):
     for info in list_data:
         print(info)
         q.write(info)
+
+
+if __name__ == "__main__":
+    print(select_file())

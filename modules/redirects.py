@@ -1,6 +1,6 @@
-#Utilities to handle redirects and redirect histories, also some proxy info
+# Utilities to handle redirects and redirect histories, also some proxy info
 import requests
-from fileIO import *
+from modules.fileIO import *
 
 def get_redirects_print_only(parsingurl):
     """Traces and prints the redirects of a link provided, does not display safelinks
@@ -97,6 +97,7 @@ def menu_options():
         if selection == 1:
             url = input("What is the URL you would like to trace?: ")
             single_URL_trace(url)
+            selection = 3
 
         if selection == 2:
             #TODO fill this out
