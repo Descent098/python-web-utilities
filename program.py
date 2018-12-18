@@ -1,29 +1,43 @@
 """File to run all the utilities from"""
-from redirects import menu_options as redirects_menu
-from tag_parsers import menu_options as tag_parsers_menu
-from fileIO import *
 import requests
+import os
 
-print("===================Welcome to Web Utilities===================")
-keep_on = True
-while keep_on == True:
+# Import module menus
+from modules.redirects import menu_options as redirects_menu
+from modules.tag_parsers import menu_options as tag_parsers_menu
+from modules.youtube_utilities import menu_options as youtube_utilities_menu
+from modules.fileIO import *
 
-    utility_to_run = (eval(input("What type of utility do you need? \n(1)Redirect tracing (2)HTML Tag parsing: ")))
-    if utility_to_run == 1:
-        redirects_menu()
-    elif utility_to_run == 2:
-        tag_parsers_menu()
-    #TODO Make this level of menu
+def clear_terminal():
+    """Clears Terminal"""
+    if os.name=='nt': #Windows
+        os.system('cls')
 
-    # selection = eval(input("What would you like to do? \n(1) Trace a redirect \n(2)Trace redirects from a text file \n(3)exit: "))
-    #
-    # if selection == 1:
-    #     url = input("What is the URL you would like to trace?: ")
-    #     single_URL_trace(url)
-    #
-    # if selection == 2:
-    #     #TODO fill this out
-    #     pass
-    #
-    # if selection == 3:
-    #     keep_on = False
+    else:
+        os.system('clear')
+
+
+def menu():
+    keep_on = True
+    print("===================Welcome to Web Utilities===================")
+    output = None
+    while keep_on == True:
+        clear_terminal()
+        if output:
+            print("NOTICE: {}\n".format(output))
+        
+        utility_to_run = (eval(input("What type of utility do you need? \n(0)Exit \n(1)Redirect tracing (Very Broken) \n(2)HTML Tag parsing \n(3)Youtube Utilities: ")))
+        if utility_to_run == 1:
+            redirects_menu()
+
+        elif utility_to_run == 2:
+            tag_parsers_menu()
+
+        elif utility_to_run == 3:
+            output = youtube_utilities_menu()
+
+        elif utility_to_run == 0:
+            exit()
+
+if __name__ == "__main__":
+    menu()
