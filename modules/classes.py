@@ -1,5 +1,15 @@
-#TODO set up a set of crawlers for specific purposes
 import scrapy
+import requests
+from bs4 import BeautifulSoup
+
+class site:
+    def __init__(self, url):
+        self.url = url
+        self.soup = BeautifulSoup(requests.get(url))
+
+    def __repr__(self):
+        soup.title.string
+
 
 class validation_spider(scrapy.Spider):
     """Crawler to validate that a site can be crawled;
@@ -13,5 +23,7 @@ class validation_spider(scrapy.Spider):
         allowed_domains = domains
         start_urls = start
 
+
 if __name__ == "__main__":
-    pass
+    yt= site("https://youtube.com")
+    print(yt)

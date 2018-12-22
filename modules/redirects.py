@@ -11,7 +11,6 @@ def get_redirects_print_only(parsingurl):
         for resp in response.history:
             strresp = str(resp.url)
             count += 1
-            #info = []
             if ("safelinks.protection.outlook.com" in strresp):
                 None
             elif ("safelinks.protection.outlook.com" not in strresp):  # parses out safelinks
